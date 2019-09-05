@@ -1,3 +1,6 @@
+// * Exports all classes
+
+
 class Node {
   constructor(val, next, prev) {
     this.val = val;
@@ -17,8 +20,7 @@ class myArray {
   push(node) {
     // [this.first, val, val, this.last <- new val]
     node = new Node(node, this.last);
-    if (this.length === 0) this.first = node, this.last = node;
-    else node.prev = this.last, this.last = node;
+    node.prev = this.last, this.last = node;
   }
   pop() {
     // [this.next, val, val, ] -> this.last
@@ -29,8 +31,7 @@ class myArray {
   unshift(node) {
     // [new val -> this.next, val, val, ]
     node = new Node(node, this.last);
-    if (this.length === 0) this.first = node, this.last = node;
-    else node.next = this.first, this.first = node;
+    node.next = this.first, this.first = node;
   }
   shift() {
     // this.next <- [, val, val, this.last]
@@ -64,9 +65,6 @@ class Block extends Stack {
     
 }
 
-let stack = new Stack(4,5,6,7,8,9)
-stack.pop()
-stack
 
 // Ring structure
 // let x = new Node(4,this);
@@ -75,3 +73,9 @@ stack
 // let z = new Node(6, x);
 // y.next = z;
 
+
+module.exports = {
+  Node,
+  myArray,
+  Stack
+}
