@@ -1,19 +1,58 @@
 // * Exports all classes
 
 // * Function Declarations
-const addPush = (obj) => {
-  return obj.push = node => {
+const addLast = (obj, meth) => {
+  return obj[meth] = node => {
     node = new Node(node, obj.last);
     node.prev = obj.last, obj.last = node;
   }
 }
 
-const addPop = (obj) => {
-  return obj.pop = node => {
+const addFirst = (obj, meth) => {
+  return obj[meth] = node => {
     node = this.last;
     this.last = node.prev;
     return node;
   }
+}
+
+const addPeekLast = (obj, meth) => {
+  return obj[meth] = () => {
+    return obj.last;
+  }
+}
+
+const addPeekFirst = (obj, meth) => {
+  return obj[meth] = () => {
+    return obj.first;
+  }
+}
+
+const addDestroyLast = (obj, meth) => {
+  return obj[meth] = () => {
+    last = obj.last;
+    obj.last = last.prev;
+    return last;
+  }
+}
+
+const addDestroyFirst = (obj, meth) => {
+  return obj[meth] = () => {
+    first = obj.first;
+    obj.first = first.next;
+    return first;
+  }
+}
+
+const makeArr = () => {
+  let newArr = {};
+  addLast(newArr, 'push');
+  addFirst(newArr, 'unshift');
+  addPeekLast(newArr, 'peekPop');
+  addPeekFirst(newArr, 'peekShift');
+  addDestroyLast(newArr, 'pop');
+  addDestroyFirst(newArr, 'shift');
+  return newArr;
 }
 
 class Node {
@@ -92,5 +131,6 @@ class Block extends Stack {
 module.exports = {
   Node,
   myArray,
-  Stack
+  Stack,
+  makeArr
 }
