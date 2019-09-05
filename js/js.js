@@ -7,31 +7,36 @@ class Node {
 }
 
 class myArray {
-  // [this.next, this.last]
+  // [this.first, this.first.next, ... , this.last.prev, this.last]
   constructor(...args) {
     this.length = 0;
     args.forEach(arg => {
       this.push(arg);
     })
-    this = `[]`
   }
   push(node) {
-    // [this.next, val, val, this.last <- new val]
+    // [this.first, val, val, this.last <- new val]
     node = new Node(node, this.last);
     if (this.length === 0) this.first = node, this.last = node;
+    else node.prev = this.last, this.last = node;
   }
   pop() {
     // [this.next, val, val, ] -> this.last
-    node = new Node(node, this.last);
-    if (this.length === 0) this.first = node, this.last = node;
+    node = this.last;
+    this.last = node.prev;
+    return node;
   }
   unshift(node) {
     // [new val -> this.next, val, val, ]
     node = new Node(node, this.last);
     if (this.length === 0) this.first = node, this.last = node;
+    else node.next = this.first, this.first = node;
   }
   shift() {
     // this.next <- [, val, val, this.last]
+    node = this.first;
+    this.first = node.next;
+    return node;
   }
 }
 
