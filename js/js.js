@@ -3,28 +3,31 @@
 // * Function Declarations
 const addLast = (obj, meth) => {
   return obj[meth] = node => {
-    node = new Node(node, obj.last);
+    node = new Node(node);
+    if (obj.last) obj.last.next = node.prev; 
     node.prev = obj.last, obj.last = node;
+    return node.val;
   }
 }
 
 const addFirst = (obj, meth) => {
   return obj[meth] = node => {
-    node = this.last;
-    this.last = node.prev;
-    return node;
+    node = newNode(node);
+    if (obj.first) obj.first.prev = node;
+    node.next = obj.first, obj.first = node;
+    return node.val;
   }
 }
 
 const addPeekLast = (obj, meth) => {
   return obj[meth] = () => {
-    return obj.last;
+    return obj.last.val;
   }
 }
 
 const addPeekFirst = (obj, meth) => {
   return obj[meth] = () => {
-    return obj.first;
+    return obj.first.val;
   }
 }
 
@@ -32,7 +35,7 @@ const addDestroyLast = (obj, meth) => {
   return obj[meth] = () => {
     last = obj.last;
     obj.last = last.prev;
-    return last;
+    return last.val;
   }
 }
 
@@ -40,7 +43,7 @@ const addDestroyFirst = (obj, meth) => {
   return obj[meth] = () => {
     first = obj.first;
     obj.first = first.next;
-    return first;
+    return first.val;
   }
 }
 
