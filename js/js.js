@@ -1,5 +1,20 @@
 // * Exports all classes
 
+// * Function Declarations
+const addPush = (obj) => {
+  return obj.push = node => {
+    node = new Node(node, obj.last);
+    node.prev = obj.last, obj.last = node;
+  }
+}
+
+const addPop = (obj) => {
+  return obj.pop = node => {
+    node = this.last;
+    this.last = node.prev;
+    return node;
+  }
+}
 
 class Node {
   constructor(val, next, prev) {
