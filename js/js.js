@@ -47,7 +47,19 @@ const addDestroyFirst = (obj, meth) => {
   }
 }
 
-const makeArr = () => {
+const findValueAt = (obj, meth) => {
+  return obj[meth] = idx => {
+    if (idx < 0) {
+      let val = obj.last.val
+      while (idx < 0) {
+        
+      }
+      return 
+    }
+  }
+}
+
+const LinkedList = () => {
   let newArr = {};
   addLast(newArr, 'push');
   addFirst(newArr, 'unshift');
@@ -63,38 +75,6 @@ class Node {
     this.val = val;
     this.next = next;
     this.prev = prev;
-  }
-}
-
-class myArray {
-  // [this.first, this.first.next, ... , this.last.prev, this.last]
-  constructor(...args) {
-    this.length = 0;
-    args.forEach(arg => {
-      this.push(arg);
-    })
-  }
-  push(node) {
-    // [this.first, val, val, this.last <- new val]
-    node = new Node(node, this.last);
-    node.prev = this.last, this.last = node;
-  }
-  pop() {
-    // [this.next, val, val, ] -> this.last
-    node = this.last;
-    this.last = node.prev;
-    return node;
-  }
-  unshift(node) {
-    // [new val -> this.next, val, val, ]
-    node = new Node(node, this.last);
-    node.next = this.first, this.first = node;
-  }
-  shift() {
-    // this.next <- [, val, val, this.last]
-    node = this.first;
-    this.first = node.next;
-    return node;
   }
 }
 
@@ -133,7 +113,6 @@ class Block extends Stack {
 
 module.exports = {
   Node,
-  myArray,
   Stack,
-  makeArr
+  LinkedList
 }
