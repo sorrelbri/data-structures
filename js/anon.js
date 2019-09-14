@@ -76,12 +76,9 @@ const LinkedList = () => {
     node.prev = obj.last, obj.last = node;
     return node.val;
   };
-  // addFirst(newArr, 'unshift');
   // addPeekLast(newArr, 'peekPop');
-  // addPeekFirst(newArr, 'peekShift');
   // addDestroyLast(newArr, 'pop');
-  // addDestroyFirst(newArr, 'shift');
-  // addFindValueAt(newArr, 'valAt')
+  // isEmpty()
   return newArr;
 }
 
@@ -133,3 +130,4 @@ class Node {
 //   StackList,
 //   LinkedList
 // }
+
