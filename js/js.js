@@ -12,7 +12,7 @@ const addLast = (obj, meth) => {
 
 const addFirst = (obj, meth) => {
   return obj[meth] = node => {
-    node = newNode(node);
+    node = new Node(node);
     if (obj.first) obj.first.prev = node;
     node.next = obj.first, obj.first = node;
     return node.val;
@@ -47,14 +47,23 @@ const addDestroyFirst = (obj, meth) => {
   }
 }
 
-const findValueAt = (obj, meth) => {
-  return obj[meth] = idx => {
-    if (idx < 0) {
-      let val = obj.last.val
-      while (idx < 0) {
-        
+const addFindValueAt = (obj, meth) => {
+  return obj[meth] = i => {
+    if (i < 0) {
+      let node = obj.last
+      while (i < 0) {
+        node = node.prev;
+        i++;
       }
-      return 
+      return node.val;
+    }
+    if (i <= 0) {
+      let node = obj.first
+      while (i<= 0) {
+        node = node.next;
+        i--;
+      }
+      return node.val;
     }
   }
 }
@@ -67,6 +76,7 @@ const LinkedList = () => {
   addPeekFirst(newArr, 'peekShift');
   addDestroyLast(newArr, 'pop');
   addDestroyFirst(newArr, 'shift');
+  addFindValueAt(newArr, 'valAt')
   return newArr;
 }
 
@@ -78,7 +88,7 @@ class Node {
   }
 }
 
-class Stack {
+class StackList {
   constructor(...args) {
     this.length = 0;
     args.forEach(arg => {
@@ -98,7 +108,7 @@ class Stack {
   }
 }
 
-class Block extends Stack {
+class Block extends StackList {
     
 }
 
@@ -113,6 +123,6 @@ class Block extends Stack {
 
 module.exports = {
   Node,
-  Stack,
+  StackList,
   LinkedList
 }
