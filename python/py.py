@@ -26,4 +26,4 @@ class SingleLinkStack:
         else:
             return None
     def is_empty(self):
-        return bool(self.head)
+        return not bool(self.head)
