@@ -68,26 +68,45 @@
 //   }
 // }
 
+// factory function open
 const LinkedList = () => {
   let obj = {};
-  () => newArr.push() = node => {
-    node = new Node(node);
-    if (obj.last) obj.last.next = node.prev; 
-    node.prev = obj.last, obj.last = node;
-    return node.val;
-  };
-  // addPeekLast(newArr, 'peekPop');
-  // addDestroyLast(newArr, 'pop');
-  // isEmpty()
-  return newArr;
-}
+// factory function open
 
-class Node {
-  constructor(val, next, prev) {
-    this.val = val;
-    this.next = next;
-    this.prev = prev;
+  // list-head
+  obj.head = null;
+
+  // list-size
+  obj.size = 0;
+
+  // list-push
+  obj.push = node => {
+    node = Node(node, obj.head);
+    obj.head = node;
+    if (obj.hasOwnProperty('size')) obj.size++;
+  };
+
+  // list-peek
+  obj.peek = _ => obj.head ? obj.head.val : undefined;
+
+  // list-pop
+  obj.pop = _ => {
+    let pop = obj.head || null;
+    obj.head = pop ? pop.next : null;
+    return pop ? pop.val : undefined;
   }
+
+  // list-isEmpty
+
+// factory function close
+  return obj;
+}
+// factory function close
+
+const Node = (val, next) => {
+  let node = {}
+  node.val = val, node.next = next;
+  return node;
 }
 
 
