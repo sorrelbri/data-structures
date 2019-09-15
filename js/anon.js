@@ -97,6 +97,7 @@ const LinkedList = () => {
   }
 
   // list-isEmpty
+  obj.isEmpty = _ => !obj.head
 
 // factory function close
   return obj;
