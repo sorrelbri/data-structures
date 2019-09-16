@@ -93,6 +93,7 @@ const LinkedList = () => {
   obj.pop = _ => {
     let pop = obj.head || null;
     obj.head = pop ? pop.next : null;
+    if (obj.hasOwnProperty('size')) obj.size--;
     return pop ? pop.val : undefined;
   }
 
