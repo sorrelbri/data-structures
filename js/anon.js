@@ -111,32 +111,46 @@ const Node = (val, next) => {
   return node;
 }
 
+const SingleLinkQueue = _ => {
+  let obj = {};
+  // list-head
+  obj.head = null;
+  // list-tail
+  obj.tail = null;
+  // list-size
+  obj.size = 0;
+  // list-enqueue
+  // requires list-tail
+  // push to tail with if statement for one element
+  obj.enqueue = node => {
+    node = Node(node, null);
+    if (obj.tail) obj.tail.next = node;
+    obj.tail = node;
+    if (obj.hasOwnProperty('size')) obj.size++;
+    if (obj.hasOwnProperty('head') && !obj.head) obj.head = node;
+  };
+  // list-dequeue
+  // requires list-head
+  // pop from head
+  obj.dequeue = _ => {
+    let dequeue = obj.head;
+    if(dequeue) { 
+      obj.head = dequeue.next;
+      if(obj.hasOwnProperty('size')) obj.size--;
+      return dequeue.val;
+    }
+    return undefined;
+  }
+  // peek
+  // requires list-head
+  // return value of head
+  obj.peek = _ => obj.head ? obj.head.val : undefined;
+  // list-is-empty
+  // requires list-head or list-tail
+  obj.isEmpty = _ => !obj.head
 
-
-// class StackList {
-//   constructor(...args) {
-//     this.length = 0;
-//     args.forEach(arg => {
-//       this.push(arg);
-//     })
-//   }
-//   push(node) {
-//     node = new Node(node, this.next);
-//     this.next = node;
-//     this.length++
-//   }
-//   pop() {
-//     let popped = this.next.val;
-//     this.next = popped.next;
-//     this.length--;
-//     return popped;
-//   }
-// }
-
-// class Block extends StackList {
-    
-// }
-
+  return obj;
+}
 
 // // Ring structure
 // // let x = new Node(4,this);
