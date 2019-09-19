@@ -37,7 +37,7 @@ class SingleLinkStack:
         return not bool(self.head)
 
 class SingleLinkQueue:
-    def __init__ self:
+    def __init__(self):
         # props
         # list_size
         self.size = 0
@@ -48,7 +48,7 @@ class SingleLinkQueue:
     # list-enqueue
     # requires list-tail
     def enqueue(self, node):
-        node = Node(node, null)
+        node = Node(node, None)
         if (self.tail): 
             self.tail.next = node
         self.tail = node
@@ -59,21 +59,22 @@ class SingleLinkQueue:
     # list-dequeue
     # requires list-head
     def dequeue(self):
-        let dequeue = self.head
+        dequeue = self.head
         if(dequeue):
             self.head = dequeue.next
             if hasattr(self, 'size'): 
                 self.size -= 1
             return dequeue.val
-        return None
+        else:
+            return None
     # peek
     # requires list-head
     def peek(self): 
-        if (self.head) 
+        if (self.head):
             return self.head.val
         else:
             return None
     # list-is-empty
     # requires list-head or list-tail
-    def isEmpty:
+    def is_empty(self):
         return not bool(self.head)
