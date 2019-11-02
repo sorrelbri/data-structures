@@ -149,8 +149,26 @@ const SingleLinkQueue = _ => {
   // requires list-head or list-tail
   obj.isEmpty = _ => !obj.head
 
+  // list-reverse
+  // requires list-head
+  // change values in place
+  obj.reverse = _ => {
+    let tail, pointer;
+    while(obj.head) {
+      pointer = obj.head;
+      obj.head = pointer.next;
+      pointer.next = tail
+      tail = pointer;
+    }
+    obj.head = tail;
+  }
+  
   return obj;
 }
+
+// n<P H>n>n
+// 
+// 
 
 // // Ring structure
 // // let x = new Node(4,this);
