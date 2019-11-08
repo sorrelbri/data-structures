@@ -78,3 +78,14 @@ class SingleLinkQueue:
     # requires list-head or list-tail
     def is_empty(self):
         return not bool(self.head)
+    # list-reverse
+    # requires list-head
+    def reverse(self):
+        while (bool(self.head)):
+            pointer = self.head
+            self.head = pointer.next
+            tail = None
+            if (bool(tail)):
+                pointer.next = tail
+            tail = pointer
+        self.head = tail

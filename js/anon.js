@@ -162,13 +162,47 @@ const SingleLinkQueue = _ => {
     }
     obj.head = tail;
   }
+
+  // list-findNode
+  // requires obj.head
+  // finds node of given value and returns it
+  obj.findNode = value => {
+    if (obj.head.value === value) return obj.head;
+    let next = obj.head.next;
+    while (next) {
+      if (next.value === value) return next;
+      next = next.next;
+    }
+    return null;
+  }
   
+  // list-insert
+  // requires obj.head
+  // inserts node after node of given value
+  obj.insert = (pointerNodeValue, node) => {
+    findNode = value => {
+      if (obj.head.value === value) return obj.head;
+      let next = obj.head.next;
+      while (next) {
+        if (next.value === value) return next;
+        next = next.next;
+      }
+      return null;
+    }
+    node = Node(node, null);
+    let pointerNode = findNode(pointerNodeValue);
+    if (pointerNode) {
+      let nextNode = pointerNode.next;
+      pointerNode.next = node;
+      node.next = nextNode;
+    } else {
+      // add to end of list
+    }
+  }
+
   return obj;
 }
 
-// n<P H>n>n
-// 
-// 
 
 // // Ring structure
 // // let x = new Node(4,this);
